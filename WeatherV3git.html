@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title> Weather Finder</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script src="http://api.wunderground.com/api/----------/conditions/q/CA/San_Francisco.json"></script>
+</head>
+
+
+<body>
+  <h1> Weather Finder </h1>
+  <input id="weather-input" type="text" name="" value="">
+  <script type="text/javascript">
+    //  (hourly.fctcode) where do I put this?
+    //http://api.wunderground.com/api/---/hourly/q/NY/New York.json
+    //http://api.wunderground.com/api/---/hourly/q/MI/Detroit.json
+    //http://api.wunderground.com/api/---/hourly/q/FL/Miami.json
+    let WundergroundSearch = ('http://api.wunderground.com/api/----------/hourly/q/CA/San_Francisco.json')
+    axios(WundergroundSearch).then(response => {
+      console.log(response.data.hourly_forecast[0].fctcode)
+
+
+weatherFound= (response.data.hourly_forecast[0].fctcode)
+      //weatherFound(response.data)
+    })
+
+    var obj = JSON.parse(text);
+    //function weatherFound(info){
+    //if (hourly.fctcode)
+    //}
+    let input = document.getElementById('weather-input');
+    // do something whenever the text input is updated
+    input.addEventListener("change", sendTextToAdafruit)
+
+    function adadfruitPostURL() {
+      const username = "bquinn"
+      const feed_key = "Weather1key"
+      const url = `https://io.adafruit.com/api/v2/${username}/feeds/${feed_key}/data`
+      return url
+    }
+    //cosole.log the event listener
+    function sendTextToAdafruit() {
+      console.log("send to ada")
+      //add networking code
+      let options = {
+        method: 'POST',
+        headers: {
+          'X-AIO-Key': "---",
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          value: response.data.hourly_forecast[0].fctcode
+        })
+      }
+
+      fetch(adadfruitPostURL(), options).then(response => {
+        return response.json()
+      }).then(data => {
+        console.log(data)
+      })
+    }
+  </script>
+</body>
+
+</html>
