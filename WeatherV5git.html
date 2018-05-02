@@ -12,18 +12,9 @@
 
 <body>
   <h1> Weather Finder </h1>
+   <input id="weather-input" type="text" name="" value="">
 
-  <ol class="list-group">
-    <li class="item1">First item</li>
-    <li class="item2">Second item</li>
-    <li class="item3">Third item</li>
-    <li class="item4">Fourth item</li>
-  </0l>
-
-  <input id="weather-input" type="text" name="" value="">
-
-
-  <script type="text/javascript">
+   <script type="text/javascript">
     //  (hourly.fctcode) where do I put this?
     //http://api.wunderground.com/api/---/hourly/q/NY/New York.json
     //http://api.wunderground.com/api/---/hourly/q/MI/Detroit.json
@@ -35,42 +26,12 @@
       //weatherFound(response.data)
     })
 
-    function loopAxios(info) {
-      for (city of citys) {
-        if (response.data.hourly_forecast[0].fctcode) {
-            let ol1 = document.getElementById("item1")
-            ol1.insertAdjacentHTML('beforeend', `<li>${response.data.conditions.CA.San_Francisco.hourly_forecast[0].fctcode}</li>`)
-          } else {
-            if (response.data.hourly_forecast[0].fctcode) {
-              let ol2 = document.getElementById("item2")
-              ol2.insertAdjacentHTML('beforeend', `<li>${.fctcode}</li>`)
-            }
-            } else {
-              if (response.data.hourly_forecast[0].fctcode) {
-                let ol3 = document.getElementById("item3")
-                ol3.insertAdjacentHTML('beforeend', `<li>${.fctcode}</li>`)
-              }
-              } else {
-                if (response.data.hourly_forecast[0].fctcode) {
-                  let ol4 = document.getElementById("item4")
-                  ol4.insertAdjacentHTML('beforeend', `<li>${.fctcode}</li>`)
-                }
-              }
-            }
-
-
-
-
-
-
 
     function weatherFound(city) {
       let city = data.hourly_forecast[0].fctcode;
       for (city of cities) {
         if (city.data.hourly_forecast[0].fctcode) {
           let city = new 'weather-input'
-
-
         }
       }
 
