@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title> Weather Finder</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script src="http://api.wunderground.com/api/a1f8f6299c77799e/conditions/q/CA/San_Francisco.json"></script>
+</head>
+
+
+<body>
+  <h1> Weather Finder </h1>
+  <input id="weather-input" type="text" name="" value="">
+  <script type="text/javascript">
+    let WundergroundSearch1 = ('http://api.wunderground.com/api/a1f8f6299c77799e/hourly/q/CA/San_Francisco.json')
+    axios(WundergroundSearch1).then(response => {
+      weatherFound1 = (response.data.hourly_forecast[0].fctcode)
+      console.log(response.data.hourly_forecast[0].fctcode)
+    })
+    let WundergroundSearch2 = ('http://api.wunderground.com/api/a1f8f6299c77799e/hourly/q/NY/New_York.json')
+    axios(WundergroundSearch2).then(response => {
+      weatherFound2 = (response.data.hourly_forecast[0].fctcode)
+      console.log(response.data.hourly_forecast[0].fctcode)
+    })
+    let WundergroundSearch3 = ('http://http://api.wunderground.com/api/a1f8f6299c77799e/hourly/q/MI/Detroit.json')
+    axios(WundergroundSearch3).then(response => {
+      weatherFound3 = (response.data.hourly_forecast[0].fctcode)
+      console.log(response.data.hourly_forecast[0].fctcode)
+    })
+    let WundergroundSearch4 = ('http://api.wunderground.com/api/a1f8f6299c77799e/hourly/q/FL/Miami.json')
+    axios(WundergroundSearch4).then(response => {
+      weatherFound4 = (response.data.hourly_forecast[0].fctcode)
+      console.log(response.data.hourly_forecast[0].fctcode)
+    })
+
+
+
+    //var obj = JSON.parse(text);
+
+    function weatherFound(info) {
+
+      let input1 = document.getElementById(`${.fctcode[0]}`);
+      input1.addEventListener("change1", sendTextToAdafruit)
+      let input2 = document.getElementById(`${.fctcode[0]}`);
+      input2.addEventListener("change2", sendTextToAdafruit)
+      let input3 = document.getElementById(`${.fctcode[0]}`);
+      input3.addEventListener("change3", sendTextToAdafruit)
+      let input4 = document.getElementById(`${.fctcode[0]}`);
+      input4.addEventListener("change4", sendTextToAdafruit)
+    }
+
+    function adadfruitPostURL() {
+      const username = "bquinn"
+      const feed_key1 = "Weather1key"
+      const feed_key2 = "Weather2key"
+      const feed_key3 = "Weather3key"
+      const feed_key4 = "Weather4key"
+
+      const url = `https://io.adafruit.com/api/v2/${username}/feeds/${feed_key}/${.fctcode[0]}`
+      return url
+    }
+    //cosole.log the event listener
+    function sendTextToAdafruit() {
+      console.log("send to ada")
+      //add networking code
+      let options = {
+        method: 'POST',
+        headers: {
+          'X-AIO-Key': "76169234a98949b6b05e40020803759f",
+          'Content-Type': 'bquinn/feeds/Weather1key/json'
+          'Content-Type': 'bquinn/feeds/Weather2key/json'
+          'Content-Type': 'bquinn/feeds/Weather3key/json'
+          'Content-Type': 'bquinn/feeds/Weather4key/json'
+        },
+        body: JSON.stringify({
+          value: input.value
+        })
+      }
+
+      fetch(adadfruitPostURL(), options).then(response => {
+        return response.json()
+      }).then(data => {
+        console.log(data)
+      })
+    }
+  </script>
+</body>
+
+</html>
